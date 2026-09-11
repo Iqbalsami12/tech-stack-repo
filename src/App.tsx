@@ -1,5 +1,7 @@
+import Banner from "./Banner"
 import Nav from "./Nav"
 import Logo from "./assets/logo-text.png"
+import Ban from "./assets/banner-stack.png"
 
 function App() {
  
@@ -8,7 +10,7 @@ function App() {
     <>
       
     <Nav></Nav>
-
+    <Banner></Banner>
       
 
       
