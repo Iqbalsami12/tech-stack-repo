@@ -2,12 +2,13 @@ import { CiStar } from "react-icons/ci";
 import type { ItechType } from "../techTypes";
 
 const Available = ({ technologies }) => {
-    return <div className="grid grid-cols-3 gap-5 sm:grid-cols-1 md:grid-cols-3">
+    return ( <div className="grid grid-cols-3 gap-5 sm:grid-cols-1 md:grid-cols-3">
 
 
         {
             technologies.map((tech: ItechType) => {
-                return <div>
+                return (
+                <div key={tech.id}>
 
                     <div className="card bg-base-100 w-96 shadow-sm rounded-2xl">
                         <div className="flex justify-between items-center">
@@ -40,15 +41,16 @@ const Available = ({ technologies }) => {
                     
                     </div>
                    
-                </div>
-            })
+                </div>);
+            })}
+            </div>
+    );
 
+        };
 
-        }
-
-    </div>
+    
 
         ;
-};
+;
 
 export default Available;

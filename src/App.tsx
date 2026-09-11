@@ -6,6 +6,7 @@ import Technologies from "./Technologies/Technologies"
 
 import { Suspense } from "react"
 import type { ItechType } from "./techTypes"
+import Footer from "./footer/Footer"
 
 
 const techFetch = async(): Promise<ItechType[]>=>{
@@ -27,6 +28,7 @@ function App() {
     fallback = {<h2>Loading Content...</h2>}>
       <Technologies techPromise = {techPromise}></Technologies>
     </Suspense>
+    <Footer></Footer>
 
       
     </>
