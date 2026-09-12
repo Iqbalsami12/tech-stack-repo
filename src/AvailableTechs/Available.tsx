@@ -2,7 +2,14 @@ import { CiStar } from "react-icons/ci";
 import type { ItechType } from "../techTypes";
 
 const Available = ({ technologies }) => {
-    return ( <div className="grid grid-cols-3 gap-5 sm:grid-cols-1 md:grid-cols-3">
+    return ( 
+    
+
+    <div className="grid grid-cols-3 gap-9">
+
+        <div className=" col-span-2 mt-12">
+
+        <div className="grid grid-cols-3 gap-5">
 
 
         {
@@ -10,7 +17,7 @@ const Available = ({ technologies }) => {
                 return (
                 <div key={tech.id}>
 
-                    <div className="card bg-base-100 w-96 shadow-sm rounded-2xl">
+                    <div className="card bg-base-100  shadow-xl transition-all duration-300 shadow-xl hover:-translate-y-2  rounded-2xl flex flex-col gap-3">
                         <div className="flex justify-between items-center">
                             <figure className="px-10 pt-10">
                             <img
@@ -37,20 +44,38 @@ const Available = ({ technologies }) => {
                             </div>
                         </div>
                          
-                       
+                       </div>
                     
                     </div>
+                  
+                
                    
-                </div>);
+            );
+                
+                
             })}
+            
+            
+
             </div>
+
+        
+    </div>
+    
+    <div className=" mt-12 card w-96 bg-base-100 card-lg shadow-sm h-96">
+  <div className="card-body">
+    <h2 className="card-title">Your Stack</h2>
+    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+    <div className="justify-end card-actions">
+      <button className="btn btn-primary w-full border-amber-50 shadow-none bg-white">Remove</button>
+    </div>
+  </div>
+</div>
+    </div>
     );
 
         };
 
     
-
-        ;
-;
 
 export default Available;

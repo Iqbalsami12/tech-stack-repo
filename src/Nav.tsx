@@ -1,5 +1,15 @@
+import { useState } from "react";
 import Logo from "./assets/logo-text.png"
+
+
+
 const Nav = () => {
+
+    const [signing, setSigning] = useState("Sign In")
+    const handleSigningType =(type: "Sign In" | "Sign Up")=>{
+        setSigning(type)
+    }
+
     return (
         <div className="mt-[30px] bg-white sticky top-0 z-10 py-4">
             <nav className="flex justify-around items-center">
@@ -16,10 +26,12 @@ const Nav = () => {
                     </ul>
                 </div>
                 <div>
-                    <button className="btn btn-primary rounded-3xl ">Sign In</button>
-                    <button className="btn btn-secondary  rounded-3xl">Sign Up</button>
-                    
-                    
+                    <button onClick={ ()=> handleSigningType("Sign In")}
+                     className={`btn ${signing ==="Sign In"? "btn-primary":""} rounded-3xl`} >Sign In</button>
+                    <button onClick={()=>{handleSigningType("Sign Up")}}
+                     className={`btn ${signing==="Sign Up"?"btn-secondary":""}  rounded-3xl`}>Sign Up</button>
+
+
                 </div>
             </nav>
         </div>
