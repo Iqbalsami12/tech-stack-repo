@@ -1,7 +1,14 @@
-import SelectedStack from "../selectedStack/SelectedStack";
+import type { Dispatch, SetStateAction } from "react";
 import TechCards from "../techCards/TechCards";
+import type { ItechType } from "../techTypes";
 
-const Available = ({ technologies }) => {
+interface IAvailableProps{
+    technologies:ItechType[]
+     selectedTechs:ItechType[]
+    setSelectedTechs:Dispatch<SetStateAction<ItechType[]>>
+}
+
+const Available = ({ technologies, selectedTechs, setSelectedTechs }:IAvailableProps) => {
     return ( 
     
 
@@ -9,12 +16,12 @@ const Available = ({ technologies }) => {
 
         <div className=" col-span-2 mt-12">
 
-        <TechCards technologies={technologies}></TechCards>
+        <TechCards technologies={technologies}  selectedTechs={selectedTechs}
+                setSelectedTechs={setSelectedTechs}></TechCards>
 
         
     </div>
 
-    <SelectedStack></SelectedStack>
     
    
     </div>

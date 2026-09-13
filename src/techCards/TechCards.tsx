@@ -1,7 +1,14 @@
+import type { Dispatch, SetStateAction } from "react";
 import type { ItechType } from "../techTypes";
 import AvailableCards from "./AvailableCards";
+interface ITechCardsProps{
+     technologies:ItechType[]
+         selectedTechs:ItechType[]
+        setSelectedTechs:Dispatch<SetStateAction<ItechType[]>>
+}
 
-const TechCards = ({technologies}) => {
+
+const TechCards = ({technologies, selectedTechs, setSelectedTechs}:ITechCardsProps) => {
 
     
 
@@ -10,22 +17,14 @@ const TechCards = ({technologies}) => {
             
               <div className="grid grid-cols-3 gap-5">
 
-
-        {
-            technologies.map((tech: ItechType) => {
-                return (
-                <div key={tech.id}>
-
-                   <AvailableCards tech = {tech}></AvailableCards>
-                    
-                    </div>
-                  
-                
-                   
-            );
-                
-                
-            })}
+        {technologies.map((tech) => (
+            <AvailableCards
+                key={tech.id}
+                tech={tech}
+                selectedTechs={selectedTechs}
+                setSelectedTechs={setSelectedTechs}
+            />
+        ))}
             
             
 
