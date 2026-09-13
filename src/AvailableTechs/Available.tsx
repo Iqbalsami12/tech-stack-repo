@@ -12,7 +12,7 @@ const Available = ({ technologies, selectedTechs, setSelectedTechs }:IAvailableP
     return ( 
     
 
-    <div className="grid grid-cols-3 gap-9">
+    <div className="grid grid-cols-3 gap-9 ">
 
         <div className=" col-span-2 mt-12">
 

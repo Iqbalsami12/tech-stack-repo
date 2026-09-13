@@ -1,6 +1,7 @@
-import { useState, type Dispatch, type SetStateAction } from "react";
+import {  type Dispatch, type SetStateAction } from "react";
 import type { ItechType } from "../techTypes";
-import { TbTrash } from "react-icons/tb";
+import { toast } from "react-toastify";
+import { IoClose } from "react-icons/io5";
 
 interface IselectedTechs{
     selectedTechs:ItechType[]
@@ -16,10 +17,12 @@ const SelectedStack = ({selectedTechs, setSelectedTechs}:IselectedTechs
         const remainingTechs=selectedTechs.filter((selectedTech)=> selectedTech.id != tech.id)
 
         setSelectedTechs(remainingTechs)
+        toast.info(`${tech.name} has been removed`)
     }
 
     const handleRemoveStack =()=>{
         setSelectedTechs([])
+        toast.info(`Stack has been cleared `)
     }
 
     return (
@@ -27,6 +30,7 @@ const SelectedStack = ({selectedTechs, setSelectedTechs}:IselectedTechs
              <div className=" mt-12 card w-96 bg-base-100 card-lg shadow-sm h-96">
   <div className="card-body">
     <h2 className="card-title">Your Stack</h2>
+    <h3 className="text-[12px] text-gray-500"> {selectedTechs.length} technologies added </h3>
 
         {selectedTechs.length===0?(<p>No technologies added</p> ):(
             selectedTechs.map((tech)=>(
@@ -36,8 +40,9 @@ const SelectedStack = ({selectedTechs, setSelectedTechs}:IselectedTechs
                     className="h-6 w-6"
                     />
                     <p>{tech.name}</p>
-                    <span  onClick={()=> handleRemoveTech(tech) }>
-                        <TbTrash></TbTrash>
+                    <span  className="cursor-pointer"
+                    onClick={()=> handleRemoveTech(tech) }>
+                        <IoClose></IoClose>
                         </span>
                 </div>)
             )

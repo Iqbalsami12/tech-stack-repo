@@ -1,6 +1,5 @@
 import { use, useState, type Dispatch, type SetStateAction } from "react";
 import type { ItechType } from "../techTypes";
-import Available from "../AvailableTechs/Available";
 import AvailableCards from "../techCards/AvailableCards";
 import SelectedStack from "../selectedStack/SelectedStack";
 

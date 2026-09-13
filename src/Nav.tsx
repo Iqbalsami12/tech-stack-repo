@@ -11,7 +11,7 @@ const Nav = () => {
     }
 
     return (
-        <div className="mt-[30px] bg-white sticky top-0 z-10 py-4">
+        <div className="mt-7.5 bg-white sticky top-0 z-10 py-4">
             <nav className="flex justify-around items-center">
                 <div>
                     <img src={Logo} alt="" />

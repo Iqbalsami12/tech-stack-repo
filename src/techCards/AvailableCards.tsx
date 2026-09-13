@@ -1,13 +1,20 @@
 import { CiStar } from "react-icons/ci";
 import type { ItechType } from "../techTypes";
-import { useState, type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import  { toast } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const AvailableCards = ({ tech, selectedTechs, setSelectedTechs}: { tech: ItechType, selectedTechs:ItechType[],setSelectedTechs:Dispatch<SetStateAction<ItechType[]>>  }) => {
 
     // const [isSelected, setIsSelected] = useState(false)
 
     const handleSelectedTech = () => {
+
+        const alreadyAdded = selectedTechs.some((selectedT)=> selectedT.id ===tech.id)
+        if(alreadyAdded){
+            toast.warning(`${tech.name} already exists in stack`)
+        }
         
         setSelectedTechs((selected) => [...selected, tech]);
         ;
@@ -22,13 +29,13 @@ const AvailableCards = ({ tech, selectedTechs, setSelectedTechs}: { tech: ItechT
 
 
         <div>
-            <div className={`card bg-base-100  shadow-xl transition-all duration-300 shadow-xl hover:-translate-y-2  rounded-2xl flex flex-col gap-3 `} >
+            <div className={`card bg-base-100  shadow-xl transition-all duration-300  hover:-translate-y-2  rounded-2xl flex flex-col gap-3 `} >
                 <div className="flex justify-between items-center">
                     <figure className="px-10 pt-10">
                         <img
                             src={tech.icon}
                             alt="react png"
-                            className="rounded-xl h-[40px] w-[40x]" />
+                            className="rounded-xl h-10 w-[40x]" />
                     </figure>
                     <button className="btn rounded-3xl " style={{ color: tech["badge-text-color"] }}> {tech.badge}</button>
                 </div>
@@ -52,7 +59,7 @@ const AvailableCards = ({ tech, selectedTechs, setSelectedTechs}: { tech: ItechT
                             disabled={isSelected===true}>
 
 
-                            {isSelected ? "Added" : "Add to Stack"}
+                            {isSelected ? (<><FontAwesomeIcon icon={faCheck} />Added</>) : "Add to Stack"}
                         </button>
                     </div>
                 </div>
