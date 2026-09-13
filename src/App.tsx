@@ -1,13 +1,10 @@
 import Banner from "./Banner"
 import Nav from "./Nav"
-import Logo from "./assets/logo-text.png"
-import Ban from "./assets/banner-stack.png"
 import Technologies from "./Technologies/Technologies"
 
-import { Suspense} from "react"
+import { Suspense, useState } from "react"
 import type { ItechType } from "./techTypes"
 import Footer from "./footer/Footer"
-import AvailableCards from "./techCards/AvailableCards"
 
 
 const techFetch = async(): Promise<ItechType[]>=>{
@@ -19,6 +16,7 @@ const techFetch = async(): Promise<ItechType[]>=>{
 
 
 function App() {
+  const [selectedTechs, setSelectedTechs] = useState<ItechType[]>([])
   const techPromise = techFetch();
   
   return (
@@ -28,7 +26,11 @@ function App() {
     <Banner></Banner>
     <Suspense
     fallback = {<h2>Loading Content...</h2>}>
-      <Technologies techPromise = {techPromise}></Technologies>
+      <Technologies
+        techPromise={techPromise}
+        selectedTechs={selectedTechs}
+        setSelectedTechs={setSelectedTechs}
+      />
     </Suspense>
     
     
